@@ -6,9 +6,9 @@ namespace TimerSystem
     {
         private Timer _timer;
 
-        private void Awake()
+        public void Initialize(Timer timer)
         {
-            _timer = new Timer(this);
+            _timer = timer;
 
             _timer.Started += OnStart;
             _timer.Updated += OnUpdate;

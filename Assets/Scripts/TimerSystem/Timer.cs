@@ -13,6 +13,7 @@ namespace TimerSystem
         public event Action Restarted;
         public event Action Stopped;
         public event Action<float> Updated;
+        public event Action<int> SecondUpdated;
 
         private readonly MonoBehaviour _coroutineRunner;
 
@@ -26,6 +27,7 @@ namespace TimerSystem
         public bool IsWorking => _coroutine != null;
         public float TargetTime => _targetTime;
         public float CurrentTime => _currentTime;
+        public float RemainingTime => _targetTime - _currentTime;
         public bool IsRunning => _isRunning;
         public bool IsPausing => !_isRunning && IsWorking;
 
@@ -44,10 +46,10 @@ namespace TimerSystem
 
             Reset();
 
-            Started?.Invoke();
             _targetTime = time;
             _isRunning = true;
             _coroutine = _coroutineRunner.StartCoroutine(Process());
+            Started?.Invoke();
         }
         
         public void Pause()
@@ -95,13 +97,22 @@ namespace TimerSystem
 
         private IEnumerator Process()
         {
+            int lastSecond = 0;
+            
             while (_currentTime < _targetTime)
             {
                 yield return new WaitUntil(() => _isRunning);
 
                 _currentTime += Time.deltaTime;
                 Updated?.Invoke(_currentTime);
-
+                
+                int currentSecond = Mathf.FloorToInt(_currentTime);
+                if (currentSecond > lastSecond)
+                {
+                    lastSecond = currentSecond;
+                    SecondUpdated?.Invoke(currentSecond);
+                }
+                
                 yield return null;
             }
 
