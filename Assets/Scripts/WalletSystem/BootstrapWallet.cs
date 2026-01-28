@@ -1,7 +1,7 @@
 using WalletSystem;
 using UnityEngine;
 
-public class Bootstrap : MonoBehaviour
+public class BootstrapWallet : MonoBehaviour
 {
     [Header("Wallet")]
     [SerializeField] private WalletView _walletView;
