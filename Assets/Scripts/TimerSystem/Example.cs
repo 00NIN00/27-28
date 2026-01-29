@@ -17,15 +17,10 @@ namespace TimerSystem
             _timer.UnPaused += OnUnPause;
             _timer.Stopped += OnStop;
             _timer.Restarted += OnRestart;
-            
-            Debug.LogWarning("_timer" + _timer.CanStart());
         }
 
         private void Update()
         {
-            //Debug.Log($"{_timer.CurrentTime}/{_timer.TargetTime}");
-
-
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 if (_timer.IsPausing)
