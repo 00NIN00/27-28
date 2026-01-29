@@ -5,16 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fefe2442-7323-48f8-9ce1-b80a94c2e712" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/TimerSystem/BootstrapTimer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/TimerSystem/BootstrapTimer.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/TimerSystem/TimerViewHeart.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/TimerSystem/TimerViewHeart.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/EnemySystem/Bootstrap.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/EnemySystem/Bootstrap.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/EnemySystem/DestructionCondition.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/EnemySystem/DestructionCondition.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/EnemySystem/EnemyData.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/EnemySystem/EnemyData.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/EnemySystem/EnemyDestroyer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/EnemySystem/EnemyDestroyer.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/EnemySystem/EnemyStorage.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/EnemySystem/EnemyStorage.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/EnemySystem/Example.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/EnemySystem/Example.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.27-28/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.27-28/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Bootstrap.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/WalletSystem/BootstrapWallet.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Bootstrap.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/WalletSystem/BootstrapWallet.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/TimerSystem/Example.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/TimerSystem/Example.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/TimerSystem/Timer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/TimerSystem/Timer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Oswald Bold SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Oswald Bold SDF.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,6 +31,10 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/EnemySystem/Bootstrap.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/EnemySystem/DestructionCondition.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/EnemySystem/EnemyStorage.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/EnemySystem/Example.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/TimerSystem/BootstrapTimer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/TimerSystem/Example.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/TimerSystem/TimerViewSlider.cs" root0="FORCE_HIGHLIGHTING" />
@@ -39,25 +49,28 @@
   &quot;associatedIndex&quot;: 0
 }</component>
   <component name="ProjectId" id="38qFdMFdFG3lvUwqu5WQ4xaIAkq" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "git-widget-placeholder": "main",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2022.3.16f1\Editor\Unity.exe" />
@@ -104,7 +117,8 @@
       <option name="presentableId" value="Default" />
       <updated>1769519285659</updated>
       <workItem from="1769519289054" duration="9504000" />
-      <workItem from="1769610334315" duration="8515000" />
+      <workItem from="1769610334315" duration="9119000" />
+      <workItem from="1769690309367" duration="7546000" />
     </task>
     <servers />
   </component>
