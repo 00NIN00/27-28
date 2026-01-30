@@ -21,6 +21,15 @@ namespace TimerSystem
 
         private void Update()
         {
+            if (Input.GetKeyDown(KeyCode.S))
+                _timer.Start(10);
+            
+            if (Input.GetKeyDown(KeyCode.R))
+                _timer.Restart();
+            
+            if (Input.GetKeyDown(KeyCode.W))
+                _timer.Stop();
+            
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 if (_timer.IsPausing)
@@ -28,52 +37,22 @@ namespace TimerSystem
                 else
                     _timer.Pause();
             }
-            
-            if (Input.GetKeyDown(KeyCode.R))
-                _timer.Restart();
-            
-            if (Input.GetKeyDown(KeyCode.S))
-                _timer.Start(10);
-            
-            if (Input.GetKeyDown(KeyCode.W))
-                _timer.Stop();
         }
 
-        private void OnStart()
-        {
-            Debug.LogWarning("Start");
-        }
+        private void OnStart() => Debug.LogWarning("Start");
 
-        private void OnUpdate(float time)
-        {
-            Debug.Log(time);
-        }
+        private void OnUpdate(float time) => Debug.Log(time);
 
-        private void OnEnd()
-        {
-            Debug.LogWarning("End");
-        }
+        private void OnEnd() => Debug.LogWarning("End");
 
-        private void OnPause()
-        {
-            Debug.LogWarning("Pause");
-        }
+        private void OnPause() => Debug.LogWarning("Pause");
 
-        private void OnUnPause()
-        {
-            Debug.LogWarning("UnPause");
-        }
+        private void OnUnPause() => Debug.LogWarning("UnPause");
 
-        private void OnRestart()
-        {
-            Debug.LogWarning("Restart");
-        }
+        private void OnRestart() => Debug.LogWarning("Restart");
 
-        private void OnStop()
-        {
-            Debug.LogWarning("Stop");
-        }
-        
+        private void OnStop() => Debug.LogWarning("Stop");
+
         private void OnDisable()
         {
             _timer.Started -= OnStart;
@@ -81,9 +60,8 @@ namespace TimerSystem
             _timer.Ended -= OnEnd;
             _timer.Paused -= OnPause;
             _timer.UnPaused -= OnUnPause;
-            _timer.Stopped-= OnStop;
+            _timer.Stopped -= OnStop;
             _timer.Restarted -= OnRestart;
         }
-
     }
 }

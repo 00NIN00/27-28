@@ -7,10 +7,10 @@ namespace TimerSystem
     public class TimerViewHeart : MonoBehaviour
     {
         private Timer _timer;
-        
-        [SerializeField] private Transform _container;
-        [SerializeField] private Image _heartPrefab;
         private readonly List<Image> _hearts = new();
+        
+        [SerializeField] private Transform _parentContainer;
+        [SerializeField] private Image _heartPrefab;
         
         public void Initialize(Timer timer)
         {
@@ -28,28 +28,12 @@ namespace TimerSystem
 
         private void OnUpdate(int currentSecond)
         {
-            /*for (int i = _hearts.Count-1; i >= 0; i--)
-            {
-                if (_timer.TargetTime - currentSecond - 1 >= i)
-                {
-                    _hearts[i].color = Color.red;
-                }
-                else
-                {
-                    _hearts[i].color = Color.grey;
-                }
-            }*/
-            
             for (int i = 0; i < _hearts.Count; i++)
             {
                 if (i <= _timer.RemainingTime) 
-                {
-                    _hearts[i].color = Color.red;
-                }
+                    EnableHeart(_hearts[i]);
                 else
-                {
-                    _hearts[i].color = Color.grey;
-                }
+                    DisableHeart(_hearts[i]);
             }
         }
 
@@ -59,16 +43,20 @@ namespace TimerSystem
             
             for (int i = 0; i < heartCount; i++)
             {
-                _hearts.Add(Instantiate(_heartPrefab, _container));
+                Image heartImage = Instantiate(_heartPrefab, _parentContainer);
+                _hearts.Add(heartImage);
             }
             
-            foreach (var heart in _hearts)
-                heart.color = Color.red;
+            foreach (Image heart in _hearts)
+                EnableHeart(heart);
         }
 
+        private void EnableHeart(Image image) => image.color = Color.red;
+        private void DisableHeart(Image image) => image.color = Color.gray;
+        
         private void Cleaning()
         {
-            foreach (var heart in _hearts)
+            foreach (Image heart in _hearts)
                 Destroy(heart.gameObject);
             
             _hearts.Clear();

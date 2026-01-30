@@ -18,7 +18,6 @@ namespace TimerSystem
         private readonly MonoBehaviour _coroutineRunner;
 
         private float _pastTargetTime;
-        
         private float _targetTime;
         private float _currentTime;
         private bool _isRunning;

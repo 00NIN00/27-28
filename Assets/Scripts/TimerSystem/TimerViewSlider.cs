@@ -1,15 +1,13 @@
-using System;
-using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine;
 
 namespace TimerSystem
 {
-    public class TimerViewSlider : MonoBehaviour, ITimerView
+    public class TimerViewSlider : MonoBehaviour
     {
         private Timer _timer;
         
         [SerializeField] private Image _image;
-
 
         public void Initialize(Timer timer)
         {
@@ -34,9 +32,5 @@ namespace TimerSystem
             _timer.Started -= OnStart;
             _timer.Updated -= OnUpdate;
         }
-    }
-
-    public interface ITimerView
-    {
     }
 }
