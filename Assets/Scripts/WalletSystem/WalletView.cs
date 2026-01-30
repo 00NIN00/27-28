@@ -61,8 +61,7 @@ namespace WalletSystem
                 view.SetIcon(icon);
             }
         }
-            
-
+        
         private void OnChangeCurrencyBy(CurrencyType type, int value)
         {
             if (_currencies.TryGetValue(type, out var view))

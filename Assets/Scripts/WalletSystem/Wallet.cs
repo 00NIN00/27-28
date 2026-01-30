@@ -1,6 +1,6 @@
 using System.Collections.Generic;
-using System;
 using UnityEngine;
+using System;
 
 namespace WalletSystem
 {
@@ -14,7 +14,7 @@ namespace WalletSystem
         {
             if (_currencies.Exists(x => x.CurrencyType == type) == false)
             {
-                var currency = new Currency(type);
+                Currency currency = new Currency(type);
                 
                 currency.Changed += CurrencyOnChanged;
                 _currencies.Add(currency);
@@ -25,7 +25,7 @@ namespace WalletSystem
         {
             if (!_currencies.Exists(x => x.CurrencyType == type)) return;
             
-            var currency = _currencies.Find(c => c.CurrencyType == type);
+            Currency currency = _currencies.Find(c => c.CurrencyType == type);
             
             currency.Changed -= CurrencyOnChanged;
             _currencies.Remove(currency);
@@ -33,8 +33,7 @@ namespace WalletSystem
 
         public void AddCurrencyBy(CurrencyType type, int value)
         {
-            var currency = _currencies.Find(c => c.CurrencyType == type);
-
+            Currency currency = _currencies.Find(c => c.CurrencyType == type);
             
             if (currency == null)
             {

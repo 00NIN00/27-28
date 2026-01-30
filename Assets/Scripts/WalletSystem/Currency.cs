@@ -14,6 +14,7 @@ namespace WalletSystem
         }
 
         public CurrencyType CurrencyType { get; }
+        
         private int Value
         {
             get => _value;
@@ -36,9 +37,12 @@ namespace WalletSystem
 
         public bool TryRemove(int value)
         {
-            if (value < 0 || Value - value < 0)
+            if (value < 0)
                 return false;
 
+            if (Value - value < 0)
+                return false;
+            
             Value -= value;
             
             return true;

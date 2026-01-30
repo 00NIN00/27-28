@@ -15,33 +15,36 @@ namespace WalletSystem
         {
             if (Input.GetKeyDown(KeyCode.Alpha1))
             {
-                _wallet.AddCurrencyBy(CurrencyType.Coin, 10);
+               AddCurrencyBy(CurrencyType.Coin, 10);
             }    
             
             if (Input.GetKeyDown(KeyCode.Alpha2))
             {
-                _wallet.RemoveCurrencyBy(CurrencyType.Coin, 5);
+                RemoveCurrencyBy(CurrencyType.Coin, 5);
             }
-            
+
             if (Input.GetKeyDown(KeyCode.Alpha3))
             {
-                _wallet.AddCurrencyBy(CurrencyType.Money, 10);
-            }    
-            
+                AddCurrencyBy(CurrencyType.Money, 10);
+            }
+
             if (Input.GetKeyDown(KeyCode.Alpha4))
             {
-                _wallet.RemoveCurrencyBy(CurrencyType.Money, 5);
+                RemoveCurrencyBy(CurrencyType.Money, 5);
             }
-            
+
             if (Input.GetKeyDown(KeyCode.Alpha5))
             {
-                _wallet.AddCurrencyBy(CurrencyType.Energy, 10);
-            }    
-            
+                AddCurrencyBy(CurrencyType.Energy, 10);
+            }
+
             if (Input.GetKeyDown(KeyCode.Alpha6))
             {
-                _wallet.RemoveCurrencyBy(CurrencyType.Energy, 5);
+                RemoveCurrencyBy(CurrencyType.Energy, 5);
             }
         }
+        
+        private void AddCurrencyBy(CurrencyType currencyType, int amount) => _wallet.AddCurrencyBy(currencyType, amount);
+        private void RemoveCurrencyBy(CurrencyType currencyType, int amount) => _wallet.RemoveCurrencyBy(currencyType, amount);
     }
 }
