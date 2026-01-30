@@ -1,8 +1,10 @@
+using System.Collections.Generic;
+
 namespace EnemySystem
 {
     public class EnemyDestroyer
     {
-        private EnemyStorage _storage;
+        private readonly EnemyStorage _storage;
 
         public EnemyDestroyer(EnemyStorage storage)
         {
@@ -11,11 +13,11 @@ namespace EnemySystem
 
         public void Update()
         {
-            var enemies = _storage.GetAllEnemies();
+            IReadOnlyList<EnemyData> enemies = _storage.GetAllEnemies();
             
             for (int i = enemies.Count - 1; i >= 0; i--)
             {
-                var enemyData = enemies[i];
+                EnemyData enemyData = enemies[i];
                 
                 if (enemyData.ShouldBeDestroyed())
                 {

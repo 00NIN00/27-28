@@ -5,15 +5,14 @@ namespace EnemySystem
     public class Enemy
     {
         private bool _isAlive = true;
-        private float _creationTime;
         
         public bool IsAlive => _isAlive;
 
-        public float CreationTime => _creationTime;
+        public float CreationTime { get; private set; }
 
         public Enemy()
         {
-            _creationTime = Time.time;
+            CreationTime = Time.time;
         }
         
         public void Kill()

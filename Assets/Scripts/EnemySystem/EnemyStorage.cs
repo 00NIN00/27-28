@@ -20,7 +20,7 @@ namespace EnemySystem
             _enemies.Remove(enemyData);
         }
         
-        public List<EnemyData> GetAllEnemies()
+        public IReadOnlyList<EnemyData> GetAllEnemies()
         {
             return _enemies;
         }

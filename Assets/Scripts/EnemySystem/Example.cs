@@ -33,7 +33,7 @@ namespace EnemySystem
 
             if (Input.GetKeyDown(KeyCode.Alpha3))
             {
-                CreateEnemyWithCondition(MoreThanLimit(_storage, 10));
+                CreateEnemyWithCondition(MoreThanLimit(_storage, 2));
             }
             
             if (Input.GetKeyDown(KeyCode.Alpha4))
@@ -54,38 +54,28 @@ namespace EnemySystem
 
         private void KillRandomEnemy()
         {
-            List<Enemy> enemies = new();
-
-            var allEnemies = _storage.GetAllEnemies();
-
-            foreach (var enemyData in allEnemies)
-            {
-                enemies.Add(enemyData.Enemy);
-            }
-
-            if (enemies.Count == 0)
-            {
-                Debug.Log("No enemies to kill!");
+            IReadOnlyList<EnemyData> allEnemies = _storage.GetAllEnemies();
+            
+            if (allEnemies.Count == 0)
                 return;
-            }
 
-            Enemy randomEnemy = enemies[Random.Range(0, enemies.Count)];
+            Enemy randomEnemy = allEnemies[Random.Range(0, allEnemies.Count)].Enemy;
             randomEnemy.Kill();
         }
 
         private void CreateEnemyWithCondition(DestructionCondition condition)
         {
-            var enemy = new Enemy();
+            Enemy enemy = new Enemy();
 
             _storage.Add(enemy, condition);
         }
 
-        public bool IsDeadCondition(Enemy enemy)
+        private bool IsDeadCondition(Enemy enemy)
         {
             return !enemy.IsAlive;
         }
 
-        public DestructionCondition TimeExpired(float lifetimeSeconds)
+        private DestructionCondition TimeExpired(float lifetimeSeconds)
         {
             return (enemy) =>
             {
@@ -94,15 +84,12 @@ namespace EnemySystem
             };
         }
 
-        public DestructionCondition MoreThanLimit(EnemyStorage storage, int limit)
+        private DestructionCondition MoreThanLimit(EnemyStorage storage, int limit)
         {
-            return (enemy) =>
-            {
-                return storage.EnemiesCount > limit;
-            };
+            return (enemy) => storage.EnemiesCount > limit;
         }
-        
-        public DestructionCondition CombineOr(params DestructionCondition[] conditions)
+
+        private DestructionCondition CombineOr(params DestructionCondition[] conditions)
         {
             return (enemy) =>
             {
@@ -115,8 +102,8 @@ namespace EnemySystem
                 return false;
             };
         }
-        
-        public static DestructionCondition CombineAnd(params DestructionCondition[] conditions)
+
+        private static DestructionCondition CombineAnd(params DestructionCondition[] conditions)
         {
             return (enemy) =>
             {
@@ -125,6 +112,7 @@ namespace EnemySystem
                     if (!condition(enemy))
                         return false;
                 }
+
                 return true;
             };
         }

@@ -4,8 +4,8 @@ namespace EnemySystem
 {
     public class EnemyData
     {
-        private Enemy _enemy;
-        private DestructionCondition _destructionCondition;
+        private readonly Enemy _enemy;
+        private readonly DestructionCondition _destructionCondition;
 
         public Enemy Enemy => _enemy;
         
@@ -14,11 +14,7 @@ namespace EnemySystem
             _enemy = enemy;
             _destructionCondition = destructionCondition;
         }
-        
-        public bool ShouldBeDestroyed()
-        {
-            return _destructionCondition(_enemy);
-        }
+        public bool ShouldBeDestroyed() => _destructionCondition(_enemy);
 
         public void Destroy()
         {
