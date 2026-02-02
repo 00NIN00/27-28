@@ -5,16 +5,16 @@ using TMPro;
 namespace WalletSystem
 {
     [System.Serializable]
-    public class CurrencyView
+    public class CurrencyView : MonoBehaviour
     {
         [SerializeField] private TMP_Text _valueText;
         [SerializeField] private Image _image;
 
-        public CurrencyView(TMP_Text valueText, Image image)
+        /*public CurrencyView(TMP_Text valueText, Image image)
         {
             _valueText = valueText;
             _image = image;
-        }
+        }*/
 
         public void SetText(string text)
         {

@@ -1,64 +1,35 @@
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 namespace WalletSystem
 {
     public class WalletView : MonoBehaviour
     {
-        [SerializeField] private List<CurrencyView> _currenciesViews = new(System.Enum.GetValues(typeof(CurrencyType)).Length);
-        [Header("Icons")]
-        [SerializeField] private Sprite _coinIcon;
-        [SerializeField] private Sprite _moneyIcon;
-        [SerializeField] private Sprite _enegyIcon;
+        [Header("UI Spawn")]
+        [SerializeField] private CurrencyView _containerPrefab;
+        [SerializeField] private RectTransform _container;
+        [Header("Icons")] 
+        [Tooltip("Index corresponds to enum number") ][SerializeField] private List<Sprite> _spritesIcons = new(Enum.GetValues(typeof(CurrencyType)).Length);
         
         private Wallet _wallet;
+        
+        private Dictionary<CurrencyType, Sprite> _icons = new();
         private Dictionary<CurrencyType, CurrencyView> _currencies = new();
 
         public void Initialize(Wallet wallet)
         {
             _wallet = wallet;
             _wallet.Changed += OnChangeCurrencyBy;
-
-            for (int i = 0; i < _currenciesViews.Count; i++)
-            {
-                _currencies.Add((CurrencyType)i, _currenciesViews[i]);
-            }
-
-            StartReset();
-            SetIcons();
+            
+            SetDictionaryIcons();
         }
 
-        private void StartReset()
+        private void SetDictionaryIcons()
         {
-            foreach (CurrencyView view in _currencies.Values)
+            foreach (CurrencyType type in Enum.GetValues(typeof(CurrencyType)))
             {
-                view.SetText("");
-            }
-        }
-
-        private void SetIcons()
-        {
-            foreach (var kvp in _currencies)
-            {
-                CurrencyType type = kvp.Key;
-                CurrencyView view = kvp.Value;
-    
-                Sprite icon = null;
-    
-                switch (type)
-                {
-                    case CurrencyType.Coin:
-                        icon = _coinIcon;
-                        break;
-                    case CurrencyType.Money:
-                        icon = _moneyIcon;
-                        break;
-                    case CurrencyType.Energy:
-                        icon = _enegyIcon;
-                        break;
-                }
-    
-                view.SetIcon(icon);
+                _icons.Add(type, _spritesIcons[(int)type]);
             }
         }
         
@@ -68,6 +39,18 @@ namespace WalletSystem
             {
                 view.SetText(value.ToString());
             }
+            else
+            {
+                CreateViewContainer(type);
+            }
+        }
+
+        private void CreateViewContainer(CurrencyType type)
+        {
+            CurrencyView view = Instantiate(_containerPrefab, _container);
+            _currencies.Add(type, view);
+
+            view.SetIcon(_icons[type]);
         }
 
         private void OnDisable()
