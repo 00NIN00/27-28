@@ -41,16 +41,17 @@ namespace WalletSystem
             }
             else
             {
-                CreateViewContainer(type);
+                CreateViewContainer(type, value);
             }
         }
 
-        private void CreateViewContainer(CurrencyType type)
+        private void CreateViewContainer(CurrencyType type,  int value)
         {
             CurrencyView view = Instantiate(_containerPrefab, _container);
             _currencies.Add(type, view);
 
             view.SetIcon(_icons[type]);
+            view.SetText(value.ToString());
         }
 
         private void OnDisable()
