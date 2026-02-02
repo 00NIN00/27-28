@@ -22,34 +22,25 @@ namespace EnemySystem
             _destroyer.Update();
 
             if (Input.GetKeyDown(KeyCode.Alpha1))
-            {
                 CreateEnemyWithCondition(IsDeadCondition);
-            }
 
             if (Input.GetKeyDown(KeyCode.Alpha2))
-            {
                 CreateEnemyWithCondition(TimeExpired(5));
-            }
 
             if (Input.GetKeyDown(KeyCode.Alpha3))
-            {
                 CreateEnemyWithCondition(MoreThanLimit(_storage, 2));
-            }
             
             if (Input.GetKeyDown(KeyCode.Alpha4))
-            {
                 CreateEnemyWithCondition(CombineOr(IsDeadCondition, TimeExpired(2)));
-            }
             
             if (Input.GetKeyDown(KeyCode.Alpha5))
-            {
                 CreateEnemyWithCondition(CombineAnd(IsDeadCondition, MoreThanLimit(_storage, 3)));
-            }
 
             if (Input.GetKeyDown(KeyCode.K))
-            {
                 KillRandomEnemy();
-            }
+            
+            if (Input.GetKeyDown(KeyCode.C))
+                _storage.Clear();
         }
 
         private void KillRandomEnemy()

@@ -24,5 +24,10 @@ namespace EnemySystem
         {
             return _enemies;
         }
+
+        public void Clear()
+        {
+            _enemies.Clear();
+        }
     }
 }
