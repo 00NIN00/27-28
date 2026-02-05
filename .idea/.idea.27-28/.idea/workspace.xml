@@ -5,8 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fefe2442-7323-48f8-9ce1-b80a94c2e712" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/TimerSystem/Timer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/TimerSystem/Timer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/TimerSystem/TimerViewHeart.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/TimerSystem/TimerViewHeart.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/EnemySystem/Example.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/EnemySystem/Example.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,6 +29,9 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/WalletSystem/Wallet.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/WalletSystem/WalletView.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d44b17e136d09081da1e8fd0e8c83fde60e11818b9f2442d7ed8cb733fae895e/System.Collections.Generic.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 0
@@ -107,7 +109,7 @@
       <workItem from="1769690309367" duration="8449000" />
       <workItem from="1769781901745" duration="2561000" />
       <workItem from="1770048427357" duration="5015000" />
-      <workItem from="1770301549774" duration="2155000" />
+      <workItem from="1770301549774" duration="4670000" />
     </task>
     <servers />
   </component>

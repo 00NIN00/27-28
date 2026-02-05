@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 namespace EnemySystem
@@ -8,7 +9,7 @@ namespace EnemySystem
 
         public int EnemiesCount => _enemies.Count;
 
-        public void Add(Enemy enemy, DestructionCondition destructionCondition)
+        public void Add(Enemy enemy, Func<Enemy, bool> destructionCondition)
         {
             EnemyData data = new EnemyData(enemy, destructionCondition);
             

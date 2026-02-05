@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace EnemySystem
@@ -5,11 +6,11 @@ namespace EnemySystem
     public class EnemyData
     {
         private readonly Enemy _enemy;
-        private readonly DestructionCondition _destructionCondition;
+        private readonly Func<Enemy, bool> _destructionCondition;
 
         public Enemy Enemy => _enemy;
         
-        public EnemyData(Enemy enemy, DestructionCondition destructionCondition)
+        public EnemyData(Enemy enemy, Func<Enemy, bool> destructionCondition)
         {
             _enemy = enemy;
             _destructionCondition = destructionCondition;

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -25,20 +26,20 @@ namespace EnemySystem
                 CreateEnemyWithCondition(IsDeadCondition);
 
             if (Input.GetKeyDown(KeyCode.Alpha2))
-                CreateEnemyWithCondition(TimeExpired(5));
+                CreateEnemyWithCondition(enemy => TimeExpired(5, enemy));
 
             if (Input.GetKeyDown(KeyCode.Alpha3))
                 CreateEnemyWithCondition(MoreThanLimit(_storage, 2));
-            
+
             if (Input.GetKeyDown(KeyCode.Alpha4))
-                CreateEnemyWithCondition(CombineOr(IsDeadCondition, TimeExpired(2)));
-            
+                CreateEnemyWithCondition(CombineOr(IsDeadCondition, enemy => TimeExpired(5, enemy)));
+
             if (Input.GetKeyDown(KeyCode.Alpha5))
                 CreateEnemyWithCondition(CombineAnd(IsDeadCondition, MoreThanLimit(_storage, 3)));
 
             if (Input.GetKeyDown(KeyCode.K))
                 KillRandomEnemy();
-            
+
             if (Input.GetKeyDown(KeyCode.C))
                 _storage.Clear();
         }
@@ -46,7 +47,7 @@ namespace EnemySystem
         private void KillRandomEnemy()
         {
             IReadOnlyList<EnemyData> allEnemies = _storage.GetAllEnemies();
-            
+
             if (allEnemies.Count == 0)
                 return;
 
@@ -54,7 +55,7 @@ namespace EnemySystem
             randomEnemy.Kill();
         }
 
-        private void CreateEnemyWithCondition(DestructionCondition condition)
+        private void CreateEnemyWithCondition(Func<Enemy, bool> condition)
         {
             Enemy enemy = new Enemy();
 
@@ -66,37 +67,34 @@ namespace EnemySystem
             return !enemy.IsAlive;
         }
 
-        private DestructionCondition TimeExpired(float lifetimeSeconds)
-        {
-            return (enemy) =>
-            {
-                float aliveTime = Time.time - enemy.CreationTime;
-                return aliveTime >= lifetimeSeconds;
-            };
-        }
+        private bool TimeExpired(float lifetimeSeconds, Enemy enemy)
+            => Time.time - enemy.CreationTime >= lifetimeSeconds;
+        
+        /*
+        private Func<Enemy, bool> TimeExpired(float lifetimeSeconds)
+            => enemy => Time.time - enemy.CreationTime >= lifetimeSeconds;
+*/
 
-        private DestructionCondition MoreThanLimit(EnemyStorage storage, int limit)
-        {
-            return (enemy) => storage.EnemiesCount > limit;
-        }
+        private Func<Enemy, bool> MoreThanLimit(EnemyStorage storage, int limit)
+            => enemy => storage.EnemiesCount > limit;
 
-        private DestructionCondition CombineOr(params DestructionCondition[] conditions)
+        private Func<Enemy, bool> CombineOr(params Func<Enemy, bool>[] conditions)
         {
-            return (enemy) =>
+            return enemy =>
             {
                 foreach (var condition in conditions)
                 {
                     if (condition(enemy))
                         return true;
                 }
-                
+
                 return false;
             };
         }
 
-        private static DestructionCondition CombineAnd(params DestructionCondition[] conditions)
+        private static Func<Enemy, bool> CombineAnd(params Func<Enemy, bool>[] conditions)
         {
-            return (enemy) =>
+            return enemy =>
             {
                 foreach (var condition in conditions)
                 {
