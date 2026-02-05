@@ -44,7 +44,7 @@ namespace WalletSystem
             }
         }
         
-        private void AddCurrencyBy(CurrencyType currencyType, int amount) => _wallet.AddCurrencyBy(currencyType, amount);
-        private void RemoveCurrencyBy(CurrencyType currencyType, int amount) => _wallet.RemoveCurrencyBy(currencyType, amount);
+        private void AddCurrencyBy(CurrencyType currencyType, int amount) => _wallet.TryAddCurrencyBy(currencyType, amount);
+        private void RemoveCurrencyBy(CurrencyType currencyType, int amount) => _wallet.TryRemoveCurrencyBy(currencyType, amount);
     }
 }

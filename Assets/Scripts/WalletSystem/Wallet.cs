@@ -7,52 +7,41 @@ namespace WalletSystem
     public class Wallet
     {
         public event Action<CurrencyType, int> Changed;
-        
+
         private readonly List<Currency> _currencies = new();
 
-        public void AddTypeCurrency(CurrencyType type)
+        public Wallet()
         {
-            if (_currencies.Exists(x => x.CurrencyType == type) == false)
+            foreach (CurrencyType type in Enum.GetValues(typeof(CurrencyType)))
             {
                 Currency currency = new Currency(type);
-                
-                currency.Changed += CurrencyOnChanged;
                 _currencies.Add(currency);
+                currency.Changed += CurrencyOnChanged;
             }
         }
+        
 
-        public void RemoveTypeCurrency(CurrencyType type)
-        {
-            if (!_currencies.Exists(x => x.CurrencyType == type)) return;
-            
-            Currency currency = _currencies.Find(c => c.CurrencyType == type);
-            
-            currency.Changed -= CurrencyOnChanged;
-            _currencies.Remove(currency);
-        }
-
-        public void AddCurrencyBy(CurrencyType type, int value)
+        public bool TryAddCurrencyBy(CurrencyType type, int value)
         {
             Currency currency = _currencies.Find(c => c.CurrencyType == type);
-            
+
             if (currency == null)
-            {
-                AddTypeCurrency(type);
-                currency = _currencies.Find(c => c.CurrencyType == type);
-            }
-            
-            currency.TryAdd(value);
+                return false;
+
+            return currency.TryAdd(value);
         }
 
-        public void RemoveCurrencyBy(CurrencyType type, int value)
+        public bool TryRemoveCurrencyBy(CurrencyType type, int value)
         {
             foreach (var currency in _currencies)
             {
                 if (currency.CurrencyType == type)
-                    currency.TryRemove(value);
+                   return currency.TryRemove(value);
             }
+
+            return false;
         }
-        
+
         private void CurrencyOnChanged(CurrencyType type, int value)
         {
             Debug.Log($"{type}: {value}");

@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="fefe2442-7323-48f8-9ce1-b80a94c2e712" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.27-28/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.27-28/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/EnemySystem/Example.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/EnemySystem/Example.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/WalletSystem/Example.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/WalletSystem/Example.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/WalletSystem/Wallet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/WalletSystem/Wallet.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -107,7 +107,8 @@
       <workItem from="1769610334315" duration="9119000" />
       <workItem from="1769690309367" duration="8449000" />
       <workItem from="1769781901745" duration="2561000" />
-      <workItem from="1770048427357" duration="3534000" />
+      <workItem from="1770048427357" duration="5015000" />
+      <workItem from="1770301549774" duration="1780000" />
     </task>
     <servers />
   </component>
