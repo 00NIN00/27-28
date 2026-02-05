@@ -13,7 +13,6 @@ namespace TimerSystem
         public event Action Restarted;
         public event Action Stopped;
         public event Action<float> Updated;
-        public event Action<int> SecondUpdated;
 
         private readonly MonoBehaviour _coroutineRunner;
 
@@ -96,21 +95,12 @@ namespace TimerSystem
 
         private IEnumerator Process()
         {
-            int lastSecond = 0;
-            
             while (_currentTime < _targetTime)
             {
                 yield return new WaitUntil(() => _isRunning);
 
                 _currentTime += Time.deltaTime;
                 Updated?.Invoke(_currentTime);
-                
-                int currentSecond = Mathf.FloorToInt(_currentTime);
-                if (currentSecond > lastSecond)
-                {
-                    lastSecond = currentSecond;
-                    SecondUpdated?.Invoke(currentSecond);
-                }
                 
                 yield return null;
             }

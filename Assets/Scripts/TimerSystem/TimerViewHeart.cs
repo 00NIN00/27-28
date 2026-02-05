@@ -17,7 +17,7 @@ namespace TimerSystem
             _timer = timer;
             
             _timer.Started += OnStart;
-            _timer.SecondUpdated += OnUpdate;
+            _timer.Updated += OnUpdate;
         }
 
         private void OnStart()
@@ -26,7 +26,7 @@ namespace TimerSystem
             CreateHearts();
         }
 
-        private void OnUpdate(int currentSecond)
+        private void OnUpdate(float currentSecond)
         {
             for (int i = 0; i < _hearts.Count; i++)
             {
@@ -65,7 +65,7 @@ namespace TimerSystem
         private void OnDisable()
         {
             _timer.Started -= OnStart;
-            _timer.SecondUpdated -= OnUpdate;
+            _timer.Updated -= OnUpdate;
         }
     }
 }
